@@ -1,4 +1,6 @@
 // Set the game up to start
+$( document ).ready(function() {
+    console.log("Ready!");
 
 // Once the start button is pushed
 
@@ -29,3 +31,4 @@
 // display start again button
 
 // if the button is clicked then restart the game.. not the page
+});
