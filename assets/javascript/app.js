@@ -1,8 +1,14 @@
 // Set the game up to start
 $( document ).ready(function() {
     console.log("Ready!");
+     $("#questAns").css("visibility", "hidden");
+     $("startBtn").css("visibility", "visible");
 
 // Once the start button is pushed
+$("#startBtn").click(function(){
+    $("#startBtn").css("visibility", "hidden");
+    $("#questAns").css("visibility", "visible");
+
 
 // a question appears
 
@@ -31,4 +37,5 @@ $( document ).ready(function() {
 // display start again button
 
 // if the button is clicked then restart the game.. not the page
+});
 });
