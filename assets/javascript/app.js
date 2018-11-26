@@ -1,6 +1,18 @@
+// My Variables
+var questions = ["Question One", "Question Two", "Question Three", "Question Four"];
+var answers = ["Answer One", "Answer Two", "Answer Three", "Answer Four"];
+
 // Set the game up to start
 $( document ).ready(function() {
     console.log("Ready!");
+    
+    $("#answers").mouseover(function(){
+        $("#answers").css("background-color", "lightgray");
+    });
+    $("#answers").mouseleave(function(){
+        $("#answers").css("background-color", "");
+    });
+
      $("#questAns").css("visibility", "hidden");
      $("startBtn").css("visibility", "visible");
 
@@ -9,10 +21,15 @@ $("#startBtn").click(function(){
     $("#startBtn").css("visibility", "hidden");
     $("#questAns").css("visibility", "visible");
 
-
 // a question appears
+for(i = 0; i < questions.length; i++) {
+$("#question").html(questions[i]);
+}
 
 // and options for answers
+for(i = 0; i < answers.length; i++) {
+    $("#answers").html(answers[i]);
+    }
 
 //timer starts counting down
 
