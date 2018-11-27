@@ -13,7 +13,8 @@ $(document).ready(function () {
     console.log("Ready!");
 
     $("#questAns").css("visibility", "hidden");
-    $("startBtn").css("visibility", "visible");
+    $("#startBtn").css("visibility", "visible");
+    $("#messageArea").css("visibility", "hidden");
 
     // Once the start button is pushed
     $("#startBtn").click(function () {
@@ -39,11 +40,16 @@ $(document).ready(function () {
             minutes = (seconds < 0) ? --minutes : minutes;
             seconds = (seconds < 0) ? 59 : seconds;
             seconds = (seconds < 10) ? '0' + seconds : seconds;
-            $('#countdown').html(minutes + ':' + seconds);
+            $("#countdown").html(minutes + ':' + seconds);
             if (minutes < 0) clearInterval(interval);
         // if the counter hits 0...    
-            if ((seconds <= 0) && (minutes <= 0)) clearInterval(interval);
             timer2 = minutes + ':' + seconds;
+            if ((seconds <= 0) && (minutes <= 0)){
+            clearInterval(interval);
+            $("#countdown").html("You ran out of time!");
+                $("#answers").css("visibility", "hidden");
+                $("#messageArea").css("visibility", "visible");
+        }
         }, 1000);
 
         // once an answer is choosen
