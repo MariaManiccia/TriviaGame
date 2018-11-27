@@ -7,20 +7,20 @@ $(document).ready(function () {
         {
             question: "Who run the world?",
             answers: [
-                {answer: "Girls.", value: true},
-                {answer: "No.", value: false},
-                {answer: "No.", value: false},
-                {answer: "No.", value: false},
+                { answer: "Girls.", value: true },
+                { answer: "No.", value: false },
+                { answer: "No.", value: false },
+                { answer: "No.", value: false },
             ],
 
         },
         {
             question: "Most infamous fight took place here.",
             answers: [
-                {answer: "No.", value: false},
-                {answer: "Elevator", value: true},
-                {answer: "No.", value: false},
-                {answer: "No.", value: false},
+                { answer: "No.", value: false },
+                { answer: "Elevator", value: true },
+                { answer: "No.", value: false },
+                { answer: "No.", value: false },
 
             ],
         },
@@ -28,19 +28,19 @@ $(document).ready(function () {
         {
             question: "How'd you wake up?",
             answers: [
-                {answer: "No.", value: false},
-                {answer: "No.", value: false},
-                {answer: "Flawless", value: true},
-                {answer: "No.", value: false},
+                { answer: "No.", value: false },
+                { answer: "No.", value: false },
+                { answer: "Flawless", value: true },
+                { answer: "No.", value: false },
             ],
         },
         {
             question: "Who would you do anything for?",
             answers: [
-                {answer: "No.", value: false},
-                {answer: "No.", value: false},
-                {answer: "No.", value: false},
-                {answer: "Anything for my mother.", value: true},
+                { answer: "No.", value: false },
+                { answer: "No.", value: false },
+                { answer: "No.", value: false },
+                { answer: "Anything for my mother.", value: true },
             ]
         }
 
@@ -78,39 +78,65 @@ $(document).ready(function () {
         }, 1000);
     }
 
-        // Once the start button is pushed
-        $("#startBtn").click(function () {
-            $("#startBtn").css("visibility", "hidden");
-            $("#questAns").css("visibility", "visible");
-    
-            // a question appears
-          
-    
-            // and options for answers
-            
-    
-            timer();
-    
-        });
+    var questCount = 0;
 
-    // reset the question screen
-    function resetQ() {
+    // getting the question function
+    function getQ() {
+
+        if (questCount < 4) {
+            resetQarea();
+            $("#question").html(questAns[questCount].question);
+            console.log(questAns[questCount].question);
+            getA();
+            timer();
+            questCount++;
+        }
+        if (questCount > 4) {
+
+            // display Game Over theme
+            resetQarea();
+            $("#nextQuest").css("visibility", "hidden");
+
+        }
+    }
+
+    // getting the answers function 
+    function getA() {
+        $("#answer1").html(questAns[questCount].answers[0].answer);
+        $("#answer2").html(questAns[questCount].answers[1].answer);
+        $("#answer3").html(questAns[questCount].answers[2].answer);
+        $("#answer4").html(questAns[questCount].answers[3].answer);
+    }
+
+    // Once the start button is pushed
+    $("#startBtn").click(function () {
+        $("#startBtn").css("visibility", "hidden");
+        $("#questAns").css("visibility", "visible");
+
+        //starting question/answer combo
+        questCount = 0;
+    
+        // a question/answer team appears
+        getQ();
+
+    });
+
+
+    // reset the question area
+    function resetQarea() {
         $("#countdown").css("visibility", "visible");
         $("#answers").css("visibility", "visible");
         $("#messageArea").css("visibility", "hidden");
         $("#time").css("visibility", "visible");
         $("#question").css("visibility", "visible");
     }
+
     // if next button is clicked
     $("#nextQuest").click(function () {
-        // reset page
-        resetQ();
         // a question appears
-       
+        getQ();
         // and options for answers
-      
-        // start timer
-        timer();
+
     });
 
     // if an answer is choosen
