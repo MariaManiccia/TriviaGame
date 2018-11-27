@@ -1,38 +1,54 @@
-// My Variables
-var questions = ["Question One", "Question Two", "Question Three", "Question Four"];
-
-var answers = {
-    questOne: ["Answer One", "Answer Two", "Answer Three", "Answer Four"],
-    questTwo: ["Answer 1", "Answer 2", "Answer 3", "Answer 4"],
-    questThree: ["Ans One", "Ans Two", "Ans Three", "Ans Four"],
-    questFour: ["Answer One!", "Answer Two!", "Answer Three!", "Answer Four!"]
-};
-
 // Set the game up to start
 $(document).ready(function () {
     console.log("Ready!");
 
+    // My Variables
+    var questAns = [
+        {
+            question: "Who run the world?",
+            answers: [
+                {answer: "Girls.", value: true},
+                {answer: "No.", value: false},
+                {answer: "No.", value: false},
+                {answer: "No.", value: false},
+            ],
+
+        },
+        {
+            question: "Most infamous fight took place here.",
+            answers: [
+                {answer: "No.", value: false},
+                {answer: "Elevator", value: true},
+                {answer: "No.", value: false},
+                {answer: "No.", value: false},
+
+            ],
+        },
+
+        {
+            question: "How'd you wake up?",
+            answers: [
+                {answer: "No.", value: false},
+                {answer: "No.", value: false},
+                {answer: "Flawless", value: true},
+                {answer: "No.", value: false},
+            ],
+        },
+        {
+            question: "Who would you do anything for?",
+            answers: [
+                {answer: "No.", value: false},
+                {answer: "No.", value: false},
+                {answer: "No.", value: false},
+                {answer: "Anything for my mother.", value: true},
+            ]
+        }
+
+    ];
+
     $("#questAns").css("visibility", "hidden");
     $("#startBtn").css("visibility", "visible");
     $("#messageArea").css("visibility", "hidden");
-
-    // Once the start button is pushed
-    $("#startBtn").click(function () {
-        $("#startBtn").css("visibility", "hidden");
-        $("#questAns").css("visibility", "visible");
-
-        // a question appears
-        $("#question").text(questions[0]);
-
-        // and options for answers
-        $("#answers1").text(answers.questOne[0]);
-        $("#answers2").text(answers.questOne[1]);
-        $("#answers3").text(answers.questOne[2]);
-        $("#answers4").text(answers.questOne[3]);
-
-        timer();
-
-    });
 
     function timer() {
         //timer starts counting down
@@ -62,6 +78,21 @@ $(document).ready(function () {
         }, 1000);
     }
 
+        // Once the start button is pushed
+        $("#startBtn").click(function () {
+            $("#startBtn").css("visibility", "hidden");
+            $("#questAns").css("visibility", "visible");
+    
+            // a question appears
+          
+    
+            // and options for answers
+            
+    
+            timer();
+    
+        });
+
     // reset the question screen
     function resetQ() {
         $("#countdown").css("visibility", "visible");
@@ -75,12 +106,9 @@ $(document).ready(function () {
         // reset page
         resetQ();
         // a question appears
-        $("#question").text(questions[1]);
+       
         // and options for answers
-        $("#answers1").text(answers.questTwo[0]);
-        $("#answers2").text(answers.questTwo[1]);
-        $("#answers3").text(answers.questTwo[2]);
-        $("#answers4").text(answers.questTwo[3]);
+      
         // start timer
         timer();
     });
