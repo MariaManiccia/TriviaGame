@@ -6,11 +6,17 @@
 
 #answers{
     text-align: center;
+   
 }
 
 #answers1,
 #answers2,
 #answers3,
 #answers4{
+    margin: auto;
+}
+
+#time,
+#countdown{
     margin: auto;
 }

@@ -2,10 +2,11 @@
 var questions = ["Question One", "Question Two", "Question Three", "Question Four"];
 
 var answers = {
-    questOne : ["Answer One", "Answer Two", "Answer Three", "Answer Four"],
-    questTwo : ["Answer 1", "Answer 2", "Answer 3", "Answer 4"],
-    questThree : ["Ans One", "Ans Two", "Ans Three", "Ans Four"],
-    questFour : ["Answer One!", "Answer Two!", "Answer Three!", "Answer Four!"]};
+    questOne: ["Answer One", "Answer Two", "Answer Three", "Answer Four"],
+    questTwo: ["Answer 1", "Answer 2", "Answer 3", "Answer 4"],
+    questThree: ["Ans One", "Ans Two", "Ans Three", "Ans Four"],
+    questFour: ["Answer One!", "Answer Two!", "Answer Three!", "Answer Four!"]
+};
 
 // Set the game up to start
 $(document).ready(function () {
@@ -21,7 +22,7 @@ $(document).ready(function () {
 
         // a question appears
         $("#question").text(questions[0]);
-         
+
         // and options for answers
         $("#answers1").text(answers.questOne[0]);
         $("#answers2").text(answers.questOne[1]);
@@ -29,6 +30,21 @@ $(document).ready(function () {
         $("#answers4").text(answers.questOne[3]);
 
         //timer starts counting down
+        var timer2 = "2:00";
+        var interval = setInterval(function () {
+            var timer = timer2.split(':');
+            var minutes = parseInt(timer[0], 10);
+            var seconds = parseInt(timer[1], 10);
+            --seconds;
+            minutes = (seconds < 0) ? --minutes : minutes;
+            seconds = (seconds < 0) ? 59 : seconds;
+            seconds = (seconds < 10) ? '0' + seconds : seconds;
+            $('#countdown').html(minutes + ':' + seconds);
+            if (minutes < 0) clearInterval(interval);
+        // if the counter hits 0...    
+            if ((seconds <= 0) && (minutes <= 0)) clearInterval(interval);
+            timer2 = minutes + ':' + seconds;
+        }, 1000);
 
         // once an answer is choosen
 
