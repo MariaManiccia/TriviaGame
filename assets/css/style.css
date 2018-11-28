@@ -1,24 +1,17 @@
-
-#jumbotron{
+#jumbotron {
     margin: auto;
     text-align: center;
 }
 
-#answers{
+#answers {
     text-align: center;
-   
-}
-
-#answers1,
-#answers2,
-#answers3,
-#answers4{
     margin: auto;
 }
 
-#time,
-#countdown,
-#nextQuest{
+#answer1, #answer2, #answer3, #answer4 {
     margin: auto;
 }
 
+#time, #countdown, #nextQuest {
+    margin: auto;
+}

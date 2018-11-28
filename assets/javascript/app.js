@@ -7,20 +7,20 @@ $(document).ready(function () {
         {
             question: "Who run the world?",
             answers: [
-                { answer: "Girls.", value: true },
-                { answer: "No.", value: false },
-                { answer: "No.", value: false },
-                { answer: "No.", value: false },
+                { answer: "Girls." },
+                { answer: "No.", },
+                { answer: "Girls." },
+                { answer: "No.", },
             ],
 
         },
         {
             question: "Most infamous fight took place here.",
             answers: [
-                { answer: "No.", value: false },
-                { answer: "Elevator", value: true },
-                { answer: "No.", value: false },
-                { answer: "No.", value: false },
+                { answer: "No." },
+                { answer: "Elevator" },
+                { answer: "Elevator" },
+                { answer: "No." },
 
             ],
         },
@@ -28,23 +28,26 @@ $(document).ready(function () {
         {
             question: "How'd you wake up?",
             answers: [
-                { answer: "No.", value: false },
-                { answer: "No.", value: false },
-                { answer: "Flawless", value: true },
-                { answer: "No.", value: false },
+                { answer: "No." },
+                { answer: "Flawless" },
+                { answer: "Flawless" },
+                { answer: "No." },
             ],
         },
         {
             question: "Who would you do anything for?",
             answers: [
-                { answer: "No.", value: false },
-                { answer: "No.", value: false },
-                { answer: "No.", value: false },
-                { answer: "Anything for my mother.", value: true },
+                { answer: "No." },
+                { answer: "No." },
+                { answer: "Anything for my mother." },
+                { answer: "Anything for my mother." },
             ]
         }
 
     ];
+
+    var rightArr = "answer3";
+
 
     $("#questAns").css("visibility", "hidden");
     $("#startBtn").css("visibility", "visible");
@@ -115,7 +118,7 @@ $(document).ready(function () {
 
         //starting question/answer combo
         questCount = 0;
-    
+
         // a question/answer team appears
         getQ();
 
@@ -131,29 +134,38 @@ $(document).ready(function () {
         $("#question").css("visibility", "visible");
     }
 
+
+    var rightCount = 0;
+    var wrongCount = 0;
+
     // if next button is clicked
     $("#nextQuest").click(function () {
         // a question appears
         getQ();
         // and options for answers
-
     });
 
     // if an answer is choosen
+    $("#answer1, #answer2, #answer3, #answer4").click(function () {
+        var chosenBtn = this.id;
+        if (chosenBtn === rightArr) {
+            console.log("Right!")
+            rightCount++;
+        }
+        else {
+            console.log("Wrong!");
+            wrongCount++;
+        }
+        debugger;
+    });
 
     // display correct theme if correct
 
     // disply wrong theme if wrong
 
-    // if next button is hit
-
-    // restart timer
-
-    // continue until no more questions are left
-
     // display the correct/wrong/time's up answer totals
 
-    // display start again button
+    // display reset button
 
     // if the button is clicked then restart the game.. not the page
 
