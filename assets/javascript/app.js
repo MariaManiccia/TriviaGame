@@ -71,14 +71,18 @@ $(document).ready(function () {
             if ((seconds <= 0) && (minutes <= 0)) {
                 clearInterval(interval);
                 // display the time's out theme
-                $("#countdown").css("visibility", "hidden");
-                $("#answers").css("visibility", "hidden");
-                $("#messageArea").css("visibility", "visible");
-                $("#time").css("visibility", "hidden");
-                $("#question").css("visibility", "hidden");
-                $("p").html("You ran out of time!");
+               timesup();
             }
         }, 1000);
+    }
+
+    function timesup(){
+        $("#countdown").css("visibility", "hidden");
+        $("#answers").css("visibility", "hidden");
+        $("#messageArea").css("visibility", "visible");
+        $("#time").css("visibility", "hidden");
+        $("#question").css("visibility", "hidden");
+        $("p").html("You ran out of time!");
     }
 
     var questCount = 0;
@@ -135,9 +139,6 @@ $(document).ready(function () {
     }
 
 
-    var rightCount = 0;
-    var wrongCount = 0;
-
     // if next button is clicked
     $("#nextQuest").click(function () {
         // a question appears
@@ -145,27 +146,49 @@ $(document).ready(function () {
         // and options for answers
     });
 
+
+    var rightCount = 0;
+    var wrongCount = 0;
+
     // if an answer is choosen
     $("#answer1, #answer2, #answer3, #answer4").click(function () {
         var chosenBtn = this.id;
         if (chosenBtn === rightArr) {
             console.log("Right!")
             rightCount++;
+            correct();
         }
         else {
             console.log("Wrong!");
             wrongCount++;
+            wrong();
         }
         debugger;
     });
 
     // display correct theme if correct
+function correct(){
+    $("#countdown").css("visibility", "hidden");
+    $("#answers").css("visibility", "hidden");
+    $("#messageArea").css("visibility", "visible");
+    $("#time").css("visibility", "hidden");
+    $("#question").css("visibility", "hidden");
+    $("p").html("You're correct!");
+}
 
     // disply wrong theme if wrong
+    function wrong(){
+        $("#countdown").css("visibility", "hidden");
+        $("#answers").css("visibility", "hidden");
+        $("#messageArea").css("visibility", "visible");
+        $("#time").css("visibility", "hidden");
+        $("#question").css("visibility", "hidden");
+        $("p").html("You're wrong!");
+    }
 
     // display the correct/wrong/time's up answer totals
 
-    // display reset button
+    // display reset button once questions are done
 
     // if the button is clicked then restart the game.. not the page
 
