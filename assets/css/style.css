@@ -28,6 +28,11 @@ body{
     margin: auto;
 }
 
-#tagline{
+#tagline {
+    color:cadetblue;
+}
+
+#endScreen, #area{
+    font-size: large;
     color: cadetblue;
 }

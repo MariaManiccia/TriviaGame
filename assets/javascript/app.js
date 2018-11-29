@@ -91,11 +91,11 @@ $(document).ready(function () {
     $("#startBtn").css("visibility", "visible");
     $("#messageArea").css("visibility", "hidden");
 
-
+    startGame();
     //timer starts counting down
     function myTimer() {
         //timer starts counting down
-    
+
         var timer2 = "0:30";
         var interval = setInterval(function () {
             var timer = timer2.split(':');
@@ -121,14 +121,15 @@ $(document).ready(function () {
 
 
 
+    var timeUpCount = 0;
 
     function timesup() {
-
+        timeUpCount++;
         $("#area").css("visibility", "hidden");
+        $("#resetQuest").css("visibility", "hidden");
         $("#countdown").css("visibility", "hidden");
         $("#answers").css("visibility", "hidden");
         $("#messageArea").css("visibility", "visible");
-        $("#nextQuest").css("visibility", "visible");
         $("#time").css("visibility", "hidden");
         $("#question").css("visibility", "hidden");
         $("#image").css("visibility", "visible");
@@ -145,23 +146,23 @@ $(document).ready(function () {
 
         $("#nextQuest").css("visibility", "hidden");
         $("#image").html(" ");
-        $("area").text(" ");
+        $("area").html(" ");
 
         if (questCount <= 7) {
-            
+
             resetQarea();
             $("#question").html(questAns[questCount].question);
             console.log(questAns[questCount].question);
             getA();
             myTimer();
             questCount++;
-            
+
         }
         if (questCount > 7) {
 
             // display Game Over theme
-            resetQarea();
-            $("#nextQuest").css("visibility", "hidden");
+            endGame();
+
 
         }
     };
@@ -179,28 +180,28 @@ $(document).ready(function () {
 
     // Once the start button is pushed
 
-    
-    $("#startBtn").click(function () {
-        $("#startBtn").css("visibility", "hidden");
-        $("#questAns").css("visibility", "visible");
+    function startGame() {
+        $("#startBtn").click(function () {
+            $("#startBtn").css("visibility", "hidden");
+            $("#questAns").css("visibility", "visible");
 
-        //starting question/answer combo
-        questCount = 0;
+            //starting question/answer combo
+            questCount = 0;
 
-        // a question/answer team appears
-        resetQarea();
-        $("#question").html(questAns[questCount].question);
-        console.log(questAns[questCount].question);
-        getQ();
-        
-        
+            // a question/answer team appears
+            resetQarea();
+            $("#question").html(questAns[questCount].question);
+            console.log(questAns[questCount].question);
+            getQ();
 
-    });
+        });
+    };
 
 
 
     // reset the question area
     function resetQarea() {
+        $("#area").css("visibility", "hidden");
         $("#countdown").css("visibility", "visible");
         $("#answers").css("visibility", "visible");
         $("#messageArea").css("visibility", "hidden");
@@ -210,13 +211,7 @@ $(document).ready(function () {
     }
 
 
-    // if next button is clicked
-    $("#nextQuest").click(function () {
-        myTimer();
-        // a question appears
-        getQ();
-        // and options for answers
-    });
+
 
 
     var rightCount = 0;
@@ -227,22 +222,22 @@ $(document).ready(function () {
 
 
         var chosenBtn = this.id;
-        
+
         if (chosenBtn === rightArr) {
-            
+
             rightCount++;
             correct();
             console.log(rightCount);
-            
+
 
 
         }
         else {
-            
+
             wrongCount++;
             wrong();
             console.log(wrongCount);
-            
+
 
 
         }
@@ -252,13 +247,13 @@ $(document).ready(function () {
     // display correct theme if correct
 
     var ansCount = 0;
-    
+
     function correct() {
-        debugger;
-        
+
         var images = (questAns[ansCount].img);
         ansCount++;
         $("#image").css("visibility", "visible");
+        $("#area").css("visibility", "visible");
         $("#countdown").css("visibility", "hidden");
         $("#answers").css("visibility", "hidden");
         $("#time").css("visibility", "hidden");
@@ -266,18 +261,19 @@ $(document).ready(function () {
         $("#image").html("<img src='" + images + "'>");
         $("#area").text("You're Correct!");
         setTimeout(getQ, 5000);
-        
+
     };
 
 
 
     // disply wrong theme if wrong
-    
+
     function wrong() {
 
         var images = (questAns[ansCount].img);
         ansCount++;
         $("#image").css("visibility", "visible");
+        $("#area").css("visibility", "visible");
         $("#countdown").css("visibility", "hidden");
         $("#answers").css("visibility", "hidden");
         $("#time").css("visibility", "hidden");
@@ -287,10 +283,20 @@ $(document).ready(function () {
         setTimeout(getQ, 5000);
     }
 
-    // display the correct/wrong/time's up answer totals
-
     // display reset button once questions are done
-
     // if the button is clicked then restart the game.. not the page
+    $("#resetQuest").click(function () {
+        startGame();
+    });
+
+    function endGame() {
+        $("#endScreen").css("visibility", "visible");
+        $("#endScreen").html("You've answered all the questions!");
+        $("#resetQuest").css("visibility", "visible");
+        $("#questAns").css("visibility", "hidden");
+        // display the correct/wrong/time's up answer totals
+
+
+    };
 
 });
