@@ -93,19 +93,19 @@ $(document).ready(function () {
 
     startGame();
 
-//timer
+    //timer
 
 
-var timeCount = 30;
+    var timeCount = 30;
 
-function  myTimer() {
-    timeCount--;
-    $('#countdown').html(timeCount);
-    if (timeCount <= 0) {
-        clearInterval(timer);
-        timesup();
+    function myTimer() {
+        timeCount--;
+        $('#countdown').html(timeCount);
+        if (timeCount <= 0) {
+            clearInterval(timer);
+            timesup();
+        }
     }
-}
 
 
 
@@ -133,7 +133,7 @@ function  myTimer() {
             setTimeout(getQ, 5000);
         };
         if (questCount >= 8) {
-            setTimeout(getQ, 3000);
+            setTimeout(endGame, 3000);
         }
 
     }
@@ -156,7 +156,7 @@ function  myTimer() {
         $("#image").html(" ");
         $("area").html(" ");
         if (questCount <= 7) {
-            
+
             resetQarea();
             $("#question").html(questAns[questCount].question);
             console.log(questAns[questCount].question);
@@ -168,8 +168,8 @@ function  myTimer() {
 
             // display Game Over theme
             endGame();
-            
-        
+
+
 
 
         }
@@ -194,7 +194,7 @@ function  myTimer() {
             $("#startBtn").css("visibility", "hidden");
             $("#questAns").css("visibility", "visible");
             $("#endScreen").css("visibility", "hidden");
-            timer =30;
+            timer = 30;
             timeCount = 30;
 
             //starting question/answer combo
@@ -205,8 +205,9 @@ function  myTimer() {
             console.log(questAns[questCount].question);
             getQ();
 
-        })};
-    
+        })
+    };
+
 
 
 
@@ -274,7 +275,7 @@ function  myTimer() {
         $("#image").html("<img src='" + images + "'>");
         $("#area").text("You're Correct!");
         setTimeout(getQ, 5000);
-        
+
 
 
     };
@@ -298,21 +299,22 @@ function  myTimer() {
         $("#image").html("<img src='" + images + "'>");
         $("#area").text("Nope! She was the correct answer.");
         setTimeout(getQ, 5000);
-        
+
     }
 
     // display reset button once questions are done
     // if the button is clicked then restart the game.. not the page
-    function reset(){
-    $("#resetQuest").click(function () {
-        $("#startBtn").html("Try again?");
-        $("#startBtn").css("visibility", "visible");
-        $("#resetQuest").css("visibility", "hidden");
-        startGame();
-        
+    function reset() {
+        $("#resetQuest").click(function () {
+            $("#startBtn").html("Try again?");
+            $("#startBtn").css("visibility", "visible");
+            $("#resetQuest").css("visibility", "hidden");
+            startGame();
 
-    }
-    )};
+
+        }
+        )
+    };
 
 
     function endGame() {
