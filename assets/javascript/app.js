@@ -145,14 +145,16 @@ $(document).ready(function () {
 
         $("#nextQuest").css("visibility", "hidden");
         $("#image").html(" ");
+        $("area").text(" ");
 
         if (questCount <= 7) {
-            questCount++;
+            
             resetQarea();
             $("#question").html(questAns[questCount].question);
             console.log(questAns[questCount].question);
             getA();
             myTimer();
+            questCount++;
             
         }
         if (questCount > 7) {
@@ -189,6 +191,7 @@ $(document).ready(function () {
         resetQarea();
         $("#question").html(questAns[questCount].question);
         console.log(questAns[questCount].question);
+        getQ();
         
         
 
@@ -247,18 +250,21 @@ $(document).ready(function () {
 
 
     // display correct theme if correct
+
+    var ansCount = 0;
     
     function correct() {
         debugger;
         
-        var images = (questAns[questCount].img);
+        var images = (questAns[ansCount].img);
+        ansCount++;
         $("#image").css("visibility", "visible");
         $("#countdown").css("visibility", "hidden");
         $("#answers").css("visibility", "hidden");
         $("#time").css("visibility", "hidden");
         $("#question").css("visibility", "hidden");
         $("#image").html("<img src='" + images + "'>");
-        $("#area").html("You're Correct!");
+        $("#area").text("You're Correct!");
         setTimeout(getQ, 5000);
         
     };
@@ -269,14 +275,15 @@ $(document).ready(function () {
     
     function wrong() {
 
-        var images = (questAns[questCount].img);
+        var images = (questAns[ansCount].img);
+        ansCount++;
         $("#image").css("visibility", "visible");
         $("#countdown").css("visibility", "hidden");
         $("#answers").css("visibility", "hidden");
         $("#time").css("visibility", "hidden");
         $("#question").css("visibility", "hidden");
         $("#image").html("<img src='" + images + "'>");
-        $("#area").html("Nope! She was the correct answer.");
+        $("#area").text("Nope! She was the correct answer.");
         setTimeout(getQ, 5000);
     }
 
