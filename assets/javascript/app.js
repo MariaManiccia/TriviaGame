@@ -168,7 +168,7 @@ function  myTimer() {
 
             // display Game Over theme
             endGame();
-            setTimeout(reset, 4000);
+            
         
 
 
