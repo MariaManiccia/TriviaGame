@@ -5,48 +5,82 @@ $(document).ready(function () {
     // My Variables
     var questAns = [
         {
-            question: "Who run the world?",
+            question: "Who was involved in inventing the FORMAC programming language?",
             answers: [
                 { answer: "Girls." },
                 { answer: "No.", },
-                { answer: "Girls." },
+                { answer: "Jean Sammet" },
                 { answer: "No.", },
             ],
+            img: "assets/images/sammet.jpg",
 
         },
         {
-            question: "Most infamous fight took place here.",
+            question: "The movie 'Hidden Figures' was based off of this woman's life.",
             answers: [
                 { answer: "No." },
                 { answer: "Elevator" },
-                { answer: "Elevator" },
+                { answer: "Katherine Johnson" },
                 { answer: "No." },
 
             ],
+            img: "assets/images/johnson.jpg",
         },
 
         {
-            question: "How'd you wake up?",
+            question: "One of the developers of COBOL and FORMAC.",
             answers: [
                 { answer: "No." },
                 { answer: "Flawless" },
-                { answer: "Flawless" },
+                { answer: "Kathleen Antonelli" },
                 { answer: "No." },
             ],
+            img: "assets/images/antonelli.jpg",
         },
         {
-            question: "Who would you do anything for?",
+            question: "This Navy Admiral was one of the first programmers of the Harvard Markl computer.",
             answers: [
                 { answer: "No." },
                 { answer: "No." },
+                { answer: "Grace Hopper" },
                 { answer: "Anything for my mother." },
+            ],
+            img: "assets/images/hopper.jpg",
+        },
+        {
+            question: "This woman is known for her work on Babbage's proposed mechanical general purpose computer.",
+            answers: [
+                { answer: "No." },
+                { answer: "No." },
+                { answer: "Ada Lovelace" },
                 { answer: "Anything for my mother." },
-            ]
-        }
-
+            ],
+            img: "assets/images/lovelace.jpg",
+        },
+        {
+            question: "She helped improve trafiic lights through code while working as a film star",
+            answers: [
+                { answer: "No." },
+                { answer: "No." },
+                { answer: "Hedy Lamarr" },
+                { answer: "Anything for my mother." },
+            ],
+            img: "assets/images/lamarr.jpg",
+        },
+        {
+            question: "Who invented the graphic calculator?",
+            answers: [
+                { answer: "No." },
+                { answer: "No." },
+                { answer: "Edith Clarke" },
+                { answer: "Anything for my mother." },
+            ],
+            img: "assets/images/clarke.jpg",
+        },
     ];
 
     var rightArr = "answer3";
+
 
 
     $("#questAns").css("visibility", "hidden");
@@ -55,6 +89,7 @@ $(document).ready(function () {
 
     function timer() {
         //timer starts counting down
+        clearInterval(interval);
         var timer2 = "0:30";
         var interval = setInterval(function () {
             var timer = timer2.split(':');
@@ -71,18 +106,17 @@ $(document).ready(function () {
             if ((seconds <= 0) && (minutes <= 0)) {
                 clearInterval(interval);
                 // display the time's out theme
-               timesup();
+                timesup();
             }
         }, 1000);
     }
 
-    function timesup(){
+    function timesup() {
         $("#countdown").css("visibility", "hidden");
         $("#answers").css("visibility", "hidden");
         $("#messageArea").css("visibility", "visible");
         $("#time").css("visibility", "hidden");
         $("#question").css("visibility", "hidden");
-        $("p").html("You ran out of time!");
     }
 
     var questCount = 0;
@@ -90,7 +124,7 @@ $(document).ready(function () {
     // getting the question function
     function getQ() {
 
-        if (questCount < 4) {
+        if (questCount < 7) {
             resetQarea();
             $("#question").html(questAns[questCount].question);
             console.log(questAns[questCount].question);
@@ -98,7 +132,7 @@ $(document).ready(function () {
             timer();
             questCount++;
         }
-        if (questCount > 4) {
+        if (questCount > 7) {
 
             // display Game Over theme
             resetQarea();
@@ -114,6 +148,7 @@ $(document).ready(function () {
         $("#answer3").html(questAns[questCount].answers[2].answer);
         $("#answer4").html(questAns[questCount].answers[3].answer);
     }
+
 
     // Once the start button is pushed
     $("#startBtn").click(function () {
@@ -157,33 +192,37 @@ $(document).ready(function () {
             console.log("Right!")
             rightCount++;
             correct();
+
         }
         else {
             console.log("Wrong!");
             wrongCount++;
             wrong();
+
         }
-        debugger;
     });
 
     // display correct theme if correct
-function correct(){
-    $("#countdown").css("visibility", "hidden");
-    $("#answers").css("visibility", "hidden");
-    $("#messageArea").css("visibility", "visible");
-    $("#time").css("visibility", "hidden");
-    $("#question").css("visibility", "hidden");
-    $("p").html("You're correct!");
-}
 
-    // disply wrong theme if wrong
-    function wrong(){
+    function correct() {
+        var images = (questAns[questCount].img);
         $("#countdown").css("visibility", "hidden");
         $("#answers").css("visibility", "hidden");
-        $("#messageArea").css("visibility", "visible");
         $("#time").css("visibility", "hidden");
         $("#question").css("visibility", "hidden");
-        $("p").html("You're wrong!");
+        $("#image").append("<img src='" + images + "'>");
+
+    };
+
+    // disply wrong theme if wrong
+    function wrong() {
+        var images = (questAns[questCount].img);
+        $("#countdown").css("visibility", "hidden");
+        $("#answers").css("visibility", "hidden");
+        $("#time").css("visibility", "hidden");
+        $("#question").css("visibility", "hidden");
+        $("#image").append("<img src='" + images + "'>");
+
     }
 
     // display the correct/wrong/time's up answer totals
