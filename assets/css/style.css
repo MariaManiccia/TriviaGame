@@ -1,3 +1,7 @@
+body{
+    background-color: floralwhite;
+}
+
 #jumbotron {
     margin: auto;
     text-align: center;
@@ -10,8 +14,20 @@
 
 #answer1, #answer2, #answer3, #answer4 {
     margin: auto;
+    background-color: cadetblue;
+    color: floralwhite;
 }
 
-#time, #countdown, #nextQuest {
+#time, #countdown, #nextQuest, #question {
     margin: auto;
+    background-color: floralwhite;
+    color: cadetblue;
+}
+
+#image{
+    margin: auto;
+}
+
+#tagline{
+    color: cadetblue;
 }

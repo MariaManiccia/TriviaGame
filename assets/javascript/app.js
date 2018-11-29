@@ -2,6 +2,8 @@
 $(document).ready(function () {
     console.log("Ready!");
 
+
+
     // My Variables
     var questAns = [
         {
@@ -81,13 +83,17 @@ $(document).ready(function () {
 
     var rightArr = "answer3";
 
+    var timeupimg = ["assets/images/timesup.jpg"];
+
 
 
     $("#questAns").css("visibility", "hidden");
     $("#startBtn").css("visibility", "visible");
     $("#messageArea").css("visibility", "hidden");
 
-    function timer() {
+
+    //timer starts counting down
+    function myTimer() {
         //timer starts counting down
         clearInterval(interval);
         var timer2 = "0:30";
@@ -111,12 +117,21 @@ $(document).ready(function () {
         }, 1000);
     }
 
+
+
+
+
+
     function timesup() {
         $("#countdown").css("visibility", "hidden");
         $("#answers").css("visibility", "hidden");
         $("#messageArea").css("visibility", "visible");
+        $("#nextQuest").css("visibility", "visible");
         $("#time").css("visibility", "hidden");
         $("#question").css("visibility", "hidden");
+        $("#image").css("visibility", "visible");
+        $("#image").html("<img src='" + timeupimg + "'>");
+
     }
 
     var questCount = 0;
@@ -124,12 +139,15 @@ $(document).ready(function () {
     // getting the question function
     function getQ() {
 
+        $("#nextQuest").css("visibility", "hidden");
+        $("#images").css("visibility", "hidden");
+
         if (questCount < 7) {
             resetQarea();
             $("#question").html(questAns[questCount].question);
             console.log(questAns[questCount].question);
             getA();
-            timer();
+            myTimer();
             questCount++;
         }
         if (questCount > 7) {
@@ -141,6 +159,8 @@ $(document).ready(function () {
         }
     }
 
+
+
     // getting the answers function 
     function getA() {
         $("#answer1").html(questAns[questCount].answers[0].answer);
@@ -151,6 +171,8 @@ $(document).ready(function () {
 
 
     // Once the start button is pushed
+
+    
     $("#startBtn").click(function () {
         $("#startBtn").css("visibility", "hidden");
         $("#questAns").css("visibility", "visible");
@@ -159,9 +181,14 @@ $(document).ready(function () {
         questCount = 0;
 
         // a question/answer team appears
-        getQ();
+        resetQarea();
+        $("#question").html(questAns[questCount].question);
+        console.log(questAns[questCount].question);
+        getA();
+        myTimer();
 
     });
+
 
 
     // reset the question area
@@ -171,11 +198,13 @@ $(document).ready(function () {
         $("#messageArea").css("visibility", "hidden");
         $("#time").css("visibility", "visible");
         $("#question").css("visibility", "visible");
+        $("#image").css("visibility", "hidden");
     }
 
 
     // if next button is clicked
     $("#nextQuest").click(function () {
+        myTimer();
         // a question appears
         getQ();
         // and options for answers
@@ -187,11 +216,15 @@ $(document).ready(function () {
 
     // if an answer is choosen
     $("#answer1, #answer2, #answer3, #answer4").click(function () {
+
+
         var chosenBtn = this.id;
+        
         if (chosenBtn === rightArr) {
             console.log("Right!")
             rightCount++;
             correct();
+
 
         }
         else {
@@ -199,29 +232,36 @@ $(document).ready(function () {
             wrongCount++;
             wrong();
 
+
         }
     });
 
-    // display correct theme if correct
 
+    // display correct theme if correct
     function correct() {
+
         var images = (questAns[questCount].img);
+        $("#image").css("visibility", "visible");
         $("#countdown").css("visibility", "hidden");
         $("#answers").css("visibility", "hidden");
         $("#time").css("visibility", "hidden");
         $("#question").css("visibility", "hidden");
-        $("#image").append("<img src='" + images + "'>");
+        $("#image").html("<img src='" + images + "'>");
+        $("#area").append("You're Correct!");
 
     };
 
     // disply wrong theme if wrong
     function wrong() {
+
         var images = (questAns[questCount].img);
+        $("#image").css("visibility", "visible");
         $("#countdown").css("visibility", "hidden");
         $("#answers").css("visibility", "hidden");
         $("#time").css("visibility", "hidden");
         $("#question").css("visibility", "hidden");
-        $("#image").append("<img src='" + images + "'>");
+        $("#image").html("<img src='" + images + "'>");
+        $("area").append("Nope!");
 
     }
 
