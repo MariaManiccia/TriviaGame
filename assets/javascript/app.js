@@ -95,7 +95,7 @@ $(document).ready(function () {
     //timer starts counting down
     function myTimer() {
         //timer starts counting down
-
+        clearInterval(interval);
         var timer2 = "0:30";
         var interval = setInterval(function () {
             var timer = timer2.split(':');
@@ -125,6 +125,7 @@ $(document).ready(function () {
 
     function timesup() {
         timeUpCount++;
+        ansCount++;
         $("#area").css("visibility", "hidden");
         $("#resetQuest").css("visibility", "hidden");
         $("#countdown").css("visibility", "hidden");
@@ -143,7 +144,6 @@ $(document).ready(function () {
     // getting the question function
 
     function getQ() {
-
         $("#nextQuest").css("visibility", "hidden");
         $("#image").html(" ");
         $("area").html(" ");
@@ -154,11 +154,11 @@ $(document).ready(function () {
             $("#question").html(questAns[questCount].question);
             console.log(questAns[questCount].question);
             getA();
-            myTimer();
             questCount++;
+            myTimer();
 
         }
-        if (questCount > 7) {
+        if (questCount >= 7) {
 
             // display Game Over theme
             endGame();
@@ -193,6 +193,7 @@ $(document).ready(function () {
             $("#question").html(questAns[questCount].question);
             console.log(questAns[questCount].question);
             getQ();
+            myTimer();
 
         });
     };
@@ -294,6 +295,10 @@ $(document).ready(function () {
         $("#endScreen").html("You've answered all the questions!");
         $("#resetQuest").css("visibility", "visible");
         $("#questAns").css("visibility", "hidden");
+        $("#endScreen").append( timeUpCount + " times, the time ran out...but ")
+        $("#endScreen").append("You've guessed " + rightCount + " right! ");
+        $("#endScreen").append("You also got " + wrongCount + " wrong. ");
+
         // display the correct/wrong/time's up answer totals
 
 
