@@ -123,6 +123,7 @@ $(document).ready(function () {
 
 
     function timesup() {
+
         $("#countdown").css("visibility", "hidden");
         $("#answers").css("visibility", "hidden");
         $("#messageArea").css("visibility", "visible");
@@ -138,17 +139,18 @@ $(document).ready(function () {
 
     // getting the question function
     function getQ() {
-
+debugger;
         $("#nextQuest").css("visibility", "hidden");
-        $("#images").css("visibility", "hidden");
+        $("#image").css("visibility", "hidden");
 
-        if (questCount < 7) {
+        if (questCount <= 7) {
+            questCount++;
             resetQarea();
             $("#question").html(questAns[questCount].question);
             console.log(questAns[questCount].question);
             getA();
             myTimer();
-            questCount++;
+            
         }
         if (questCount > 7) {
 
@@ -224,6 +226,7 @@ $(document).ready(function () {
             console.log("Right!")
             rightCount++;
             correct();
+            
 
 
         }
@@ -231,6 +234,7 @@ $(document).ready(function () {
             console.log("Wrong!");
             wrongCount++;
             wrong();
+            
 
 
         }
@@ -248,8 +252,10 @@ $(document).ready(function () {
         $("#question").css("visibility", "hidden");
         $("#image").html("<img src='" + images + "'>");
         $("#area").append("You're Correct!");
-
+        
     };
+
+
 
     // disply wrong theme if wrong
     function wrong() {
