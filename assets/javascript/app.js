@@ -95,7 +95,7 @@ $(document).ready(function () {
     //timer starts counting down
     function myTimer() {
         //timer starts counting down
-        clearInterval(interval);
+    
         var timer2 = "0:30";
         var interval = setInterval(function () {
             var timer = timer2.split(':');
@@ -189,8 +189,8 @@ $(document).ready(function () {
         resetQarea();
         $("#question").html(questAns[questCount].question);
         console.log(questAns[questCount].question);
-        getA();
-        myTimer();
+        
+        
 
     });
 
@@ -258,7 +258,7 @@ $(document).ready(function () {
         $("#time").css("visibility", "hidden");
         $("#question").css("visibility", "hidden");
         $("#image").html("<img src='" + images + "'>");
-        $("#area").text("You're Correct!");
+        $("#area").html("You're Correct!");
         setTimeout(getQ, 5000);
         
     };
@@ -276,7 +276,7 @@ $(document).ready(function () {
         $("#time").css("visibility", "hidden");
         $("#question").css("visibility", "hidden");
         $("#image").html("<img src='" + images + "'>");
-        $("#area").text("Nope! She was the correct answer.");
+        $("#area").html("Nope! She was the correct answer.");
         setTimeout(getQ, 5000);
     }
 
