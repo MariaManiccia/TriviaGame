@@ -9,10 +9,10 @@ $(document).ready(function () {
         {
             question: "Who was involved in inventing the FORMAC programming language?",
             answers: [
-                { answer: "Girls." },
-                { answer: "No.", },
+                { answer: "Mrs. Knowles-Carter" },
+                { answer: "Hedy Lamarr", },
                 { answer: "Jean Sammet" },
-                { answer: "No.", },
+                { answer: "Annika Traner", },
             ],
             img: "assets/images/sammet.jpg",
 
@@ -20,10 +20,10 @@ $(document).ready(function () {
         {
             question: "The movie 'Hidden Figures' was based off of this woman's life.",
             answers: [
-                { answer: "No." },
-                { answer: "Elevator" },
+                { answer: "Laura Shortridge" },
+                { answer: "Blue Ivy Carter" },
                 { answer: "Katherine Johnson" },
-                { answer: "No." },
+                { answer: "Sheryl Sandberg" },
 
             ],
             img: "assets/images/johnson.jpg",
@@ -32,50 +32,50 @@ $(document).ready(function () {
         {
             question: "One of the developers of COBOL and FORMAC.",
             answers: [
-                { answer: "No." },
-                { answer: "Flawless" },
+                { answer: "Marissa Mayer" },
+                { answer: "Hailey Halterman" },
                 { answer: "Kathleen Antonelli" },
-                { answer: "No." },
+                { answer: "Rumi Carter" },
             ],
             img: "assets/images/antonelli.jpg",
         },
         {
             question: "This Navy Admiral was one of the first programmers of the Harvard Markl computer.",
             answers: [
-                { answer: "No." },
-                { answer: "No." },
+                { answer: "Sydney Dunlap" },
+                { answer: "Tina Lawson" },
                 { answer: "Grace Hopper" },
-                { answer: "Anything for my mother." },
+                { answer: "Vanessa Hurst" },
             ],
             img: "assets/images/hopper.jpg",
         },
         {
             question: "This woman is known for her work on Babbage's proposed mechanical general purpose computer.",
             answers: [
-                { answer: "No." },
-                { answer: "No." },
+                { answer: "Solange Knowles" },
+                { answer: "Stacy Wojcicki" },
                 { answer: "Ada Lovelace" },
-                { answer: "Anything for my mother." },
+                { answer: "Stacy Acker" },
             ],
             img: "assets/images/lovelace.jpg",
         },
         {
             question: "She helped improve trafiic lights through code while working as a film star",
             answers: [
-                { answer: "No." },
-                { answer: "No." },
+                { answer: "Jennifer Mazanec" },
+                { answer: "Angela Ahrendts" },
                 { answer: "Hedy Lamarr" },
-                { answer: "Anything for my mother." },
+                { answer: "Angie Beyonce" },
             ],
             img: "assets/images/lamarr.jpg",
         },
         {
             question: "Who invented the graphic calculator?",
             answers: [
-                { answer: "No." },
-                { answer: "No." },
+                { answer: "Maria Maniccia" },
+                { answer: "Julia Magyar" },
                 { answer: "Edith Clarke" },
-                { answer: "Anything for my mother." },
+                { answer: "Zachary Campbell" },
             ],
             img: "assets/images/clarke.jpg",
         },
