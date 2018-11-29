@@ -124,6 +124,7 @@ $(document).ready(function () {
 
     function timesup() {
 
+        $("#area").css("visibility", "hidden");
         $("#countdown").css("visibility", "hidden");
         $("#answers").css("visibility", "hidden");
         $("#messageArea").css("visibility", "visible");
@@ -132,16 +133,18 @@ $(document).ready(function () {
         $("#question").css("visibility", "hidden");
         $("#image").css("visibility", "visible");
         $("#image").html("<img src='" + timeupimg + "'>");
+        setTimeout(getQ, 5000);
 
     }
 
     var questCount = 0;
 
     // getting the question function
+
     function getQ() {
-debugger;
+
         $("#nextQuest").css("visibility", "hidden");
-        $("#image").css("visibility", "hidden");
+        $("#image").html(" ");
 
         if (questCount <= 7) {
             questCount++;
@@ -159,7 +162,7 @@ debugger;
             $("#nextQuest").css("visibility", "hidden");
 
         }
-    }
+    };
 
 
 
@@ -223,17 +226,19 @@ debugger;
         var chosenBtn = this.id;
         
         if (chosenBtn === rightArr) {
-            console.log("Right!")
+            
             rightCount++;
             correct();
+            console.log(rightCount);
             
 
 
         }
         else {
-            console.log("Wrong!");
+            
             wrongCount++;
             wrong();
+            console.log(wrongCount);
             
 
 
@@ -242,8 +247,10 @@ debugger;
 
 
     // display correct theme if correct
+    
     function correct() {
-
+        debugger;
+        
         var images = (questAns[questCount].img);
         $("#image").css("visibility", "visible");
         $("#countdown").css("visibility", "hidden");
@@ -251,13 +258,15 @@ debugger;
         $("#time").css("visibility", "hidden");
         $("#question").css("visibility", "hidden");
         $("#image").html("<img src='" + images + "'>");
-        $("#area").append("You're Correct!");
+        $("#area").text("You're Correct!");
+        setTimeout(getQ, 5000);
         
     };
 
 
 
     // disply wrong theme if wrong
+    
     function wrong() {
 
         var images = (questAns[questCount].img);
@@ -267,8 +276,8 @@ debugger;
         $("#time").css("visibility", "hidden");
         $("#question").css("visibility", "hidden");
         $("#image").html("<img src='" + images + "'>");
-        $("area").append("Nope!");
-
+        $("#area").text("Nope! She was the correct answer.");
+        setTimeout(getQ, 5000);
     }
 
     // display the correct/wrong/time's up answer totals
