@@ -99,7 +99,6 @@ $(document).ready(function () {
 var timeCount = 30;
 
 function  myTimer() {
-debugger;
     timeCount--;
     $('#countdown').html(timeCount);
     if (timeCount <= 0) {
@@ -134,7 +133,7 @@ debugger;
             setTimeout(getQ, 5000);
         };
         if (questCount >= 8) {
-            setTimeout(endGame, 5000);
+            setTimeout(getQ, 3000);
         }
 
     }
@@ -144,6 +143,14 @@ debugger;
     // getting the question function
 
     function getQ() {
+        $("#resetQuest").css("visibility", "hidden");
+        $("#questAns").css("visibility", "visible");
+        $("#endScreen").css("visibility", "hidden");
+        $("#question").css("visibility", "visible");
+        $("#time").css("visibility", "visible");
+        $("#countdown").css("visibility", "visible");
+        $("#answers").css("visibility", "visible");
+        $("#messageArea").css("visibility", "visible");
         $('#countdown').html("<span id='counter'>30</span>");
         $("#nextQuest").css("visibility", "hidden");
         $("#image").html(" ");
@@ -157,10 +164,11 @@ debugger;
             questCount++;
 
         }
-        if (questCount >= 7) {
+        if (questCount >= 8) {
 
             // display Game Over theme
             endGame();
+            setTimeout(reset, 4000);
         
 
 
@@ -179,6 +187,8 @@ debugger;
 
 
     // Once the start button is pushed
+
+
     function startGame() {
         $("#startBtn").click(function () {
             $("#startBtn").css("visibility", "hidden");
@@ -195,8 +205,8 @@ debugger;
             console.log(questAns[questCount].question);
             getQ();
 
-        });
-    }
+        })};
+    
 
 
 
@@ -293,41 +303,30 @@ debugger;
 
     // display reset button once questions are done
     // if the button is clicked then restart the game.. not the page
+    function reset(){
     $("#resetQuest").click(function () {
+        $("#startBtn").html("Try again?");
+        $("#startBtn").css("visibility", "visible");
         $("#resetQuest").css("visibility", "hidden");
-        $("#questAns").css("visibility", "visible");
-        $("#endScreen").css("visibility", "hidden");
-        $("#question").css("visibility", "visible");
-        $("#time").css("visibility", "visible");
-        $("#countdown").css("visibility", "visible");
-        $("#answers").css("visibility", "visible");
-        $("#messageArea").css("visibility", "visible");
+        startGame();
         
 
-        //starting question/answer combo
-        questCount = 0;
-
-        // a question/answer team appears
-        $("#question").html(questAns[questCount].question);
-        console.log(questAns[questCount].question);
-        getQ();
-    
-    });
+    }
+    )};
 
 
     function endGame() {
         timer = 0;
-        timeCoount = 0;
+        timeCount = 0;
         $("#image").css("visibility", "hidden");
         $("#endScreen").css("visibility", "visible");
         $("#endScreen").html("<h3>You've answered all the questions!</h3>");
         $("#resetQuest").css("visibility", "visible");
+        $("#messageArea").css("visibility", "visible");
         $("#questAns").css("visibility", "hidden");
         $("#endScreen").html("<h2>" + timeUpCount + " times, the time ran out...but</h2> ")
         $("#endScreen").append("<h2> you've guessed " + rightCount + " right!</h2>");
         $("#endScreen").append("<h2>You also got " + wrongCount + " wrong. </h2>");
-
-
     };
 
 });
