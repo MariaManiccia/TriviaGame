@@ -191,8 +191,13 @@ $(document).ready(function () {
 
     function startGame() {
         $("#startBtn").click(function () {
+            debugger;
             $("#startBtn").css("visibility", "hidden");
             $("#questAns").css("visibility", "visible");
+            $("#time").css("visibility", "visible");
+            $("#countdown").css("visibility", "visible");
+            $("#answers").css("visibility", "visible");
+            $("#question").css("visibility", "visible");
             $("#endScreen").css("visibility", "hidden");
             timer = 30;
             timeCount = 30;
@@ -306,11 +311,10 @@ $(document).ready(function () {
     // if the button is clicked then restart the game.. not the page
     function reset() {
         $("#resetQuest").click(function () {
-            $("#startBtn").html("Try again?");
-            $("#startBtn").css("visibility", "visible");
-            $("#resetQuest").css("visibility", "hidden");
+           $("#resetQuest").css("visibility", "hidden");
+           $("#startBtn").css("visibility", "visible");
+           $("#endScreen").css("visibility", "hidden");
             startGame();
-
 
         }
         )
@@ -327,6 +331,7 @@ $(document).ready(function () {
         $("#time").css("visibility", "hidden");
         $("#countdown").css("visibility", "hidden");
         $("#answers").css("visibility", "hidden");
+        $("#question").css("visibility", "hidden");
         $("#endScreen").css("visibility", "visible");
         $("#endScreen").html("<h3>You've answered all the questions!</h3>");
         $("#resetQuest").css("visibility", "visible");
@@ -334,6 +339,7 @@ $(document).ready(function () {
         $("#endScreen").html("<h2>" + timeUpCount + " times, the time ran out...but</h2> ")
         $("#endScreen").append("<h2> you've guessed " + rightCount + " right!</h2>");
         $("#endScreen").append("<h2>You also got " + wrongCount + " wrong. </h2>");
+        reset();
     };
 
 });
