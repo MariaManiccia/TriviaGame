@@ -320,8 +320,8 @@ $(document).ready(function () {
     function endGame() {
         debugger;
         questCount= 0;
-        timer = 0;
         timeCount = 0;
+        clearInterval(timer);
         $("#image").css("visibility", "hidden");
         $("#questAns").css("visibility", "hidden");
         $("#time").css("visibility", "hidden");
