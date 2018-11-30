@@ -204,7 +204,7 @@ $(document).ready(function () {
 
             //starting question/answer combo
             questCount = 0;
-
+            ansCount = 0;
             // a question/answer team appears
             $("#question").html(questAns[questCount].question);
             console.log(questAns[questCount].question);
