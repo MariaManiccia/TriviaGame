@@ -132,7 +132,7 @@ $(document).ready(function () {
         if (questCount <= 7) {
             setTimeout(getQ, 5000);
         };
-        if (questCount >= 8) {
+        if (questCount > 7) {
             setTimeout(endGame, 3000);
         }
 
@@ -155,7 +155,7 @@ $(document).ready(function () {
         $("#nextQuest").css("visibility", "hidden");
         $("#image").html(" ");
         $("area").html(" ");
-        if (questCount <= 7) {
+        if (questCount <= 6) {
 
             resetQarea();
             $("#question").html(questAns[questCount].question);
@@ -164,7 +164,7 @@ $(document).ready(function () {
             questCount++;
 
         }
-        if (questCount >= 8) {
+        if (questCount >= 7) {
 
             // display Game Over theme
             endGame();
@@ -318,14 +318,19 @@ $(document).ready(function () {
 
 
     function endGame() {
+        debugger;
+        questCount= 0;
         timer = 0;
         timeCount = 0;
         $("#image").css("visibility", "hidden");
+        $("#questAns").css("visibility", "hidden");
+        $("#time").css("visibility", "hidden");
+        $("#countdown").css("visibility", "hidden");
+        $("#answers").css("visibility", "hidden");
         $("#endScreen").css("visibility", "visible");
         $("#endScreen").html("<h3>You've answered all the questions!</h3>");
         $("#resetQuest").css("visibility", "visible");
         $("#messageArea").css("visibility", "visible");
-        $("#questAns").css("visibility", "hidden");
         $("#endScreen").html("<h2>" + timeUpCount + " times, the time ran out...but</h2> ")
         $("#endScreen").append("<h2> you've guessed " + rightCount + " right!</h2>");
         $("#endScreen").append("<h2>You also got " + wrongCount + " wrong. </h2>");
