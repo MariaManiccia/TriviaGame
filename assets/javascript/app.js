@@ -143,8 +143,6 @@ $(document).ready(function () {
     // getting the question function
 
     function getQ() {
-        clearInterval(timer);
-        timer = setInterval(myTimer, 1000);
         $("#resetQuest").css("visibility", "hidden");
         $("#questAns").css("visibility", "visible");
         $("#endScreen").css("visibility", "hidden");
@@ -193,19 +191,17 @@ $(document).ready(function () {
 
     function startGame() {
         $("#startBtn").click(function () {
-            
+            debugger;
             $("#startBtn").css("visibility", "hidden");
             $("#questAns").css("visibility", "visible");
             $("#time").css("visibility", "visible");
             $("#countdown").css("visibility", "visible");
             $("#answers").css("visibility", "visible");
             $("#question").css("visibility", "visible");
-            $("#endScreen").html(" ");
+            $("#endScreen").css("visibility", "hidden");
             timer = 30;
             timeCount = 30;
-            wrongCount = 0;
-            rightCount = 0;
-            timeUpCount = 0;
+
             //starting question/answer combo
             questCount = 0;
             // a question/answer team appears
@@ -221,6 +217,7 @@ $(document).ready(function () {
 
     // reset the question area
     function resetQarea() {
+        timer = setInterval(myTimer, 1000);
         $("#area").css("visibility", "hidden");
         $("#countdown").css("visibility", "visible");
         $("#answers").css("visibility", "visible");
@@ -314,9 +311,23 @@ $(document).ready(function () {
     function reset() {
         $("#resetQuest").click(function () {
            $("#resetQuest").css("visibility", "hidden");
-           $("#startBtn").css("visibility", "visible");
+           $("#endScreen").html(" ");
+           $("#questAns").css("visibility", "visible");
+           $("#time").css("visibility", "visible");
+           $("#countdown").css("visibility", "visible");
+           $("#answers").css("visibility", "visible");
+           $("#question").css("visibility", "visible");
            $("#endScreen").css("visibility", "hidden");
-            startGame();
+           timer = 30;
+           timeCount = 30;
+            rightCount = 0;
+            wrongCount = 0;
+           //starting question/answer combo
+           questCount = 0;
+           // a question/answer team appears
+           $("#question").html(questAns[questCount].question);
+           console.log(questAns[questCount].question);
+           getQ();
 
         }
         )
@@ -324,9 +335,9 @@ $(document).ready(function () {
 
 
     function endGame() {
-        
+        debugger;
         questCount= 0;
-        timeCount = 30;
+        timeCount = 0;
         ansCount = 0;
         clearInterval(timer);
         $("#image").css("visibility", "hidden");
