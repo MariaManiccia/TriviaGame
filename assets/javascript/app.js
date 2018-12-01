@@ -191,7 +191,7 @@ $(document).ready(function () {
 
     function startGame() {
         $("#startBtn").click(function () {
-            debugger;
+            
             $("#startBtn").css("visibility", "hidden");
             $("#questAns").css("visibility", "visible");
             $("#time").css("visibility", "visible");
@@ -335,7 +335,7 @@ $(document).ready(function () {
 
 
     function endGame() {
-        debugger;
+        
         questCount= 0;
         timeCount = 0;
         ansCount = 0;
