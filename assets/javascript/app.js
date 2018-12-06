@@ -10,9 +10,9 @@ $(document).ready(function () {
             question: "Who was involved in inventing the FORMAC programming language?",
             answers: [
                 { answer: "Mrs. Knowles-Carter" },
-                { answer: "Hedy Lamarr", },
+                { answer: "Hedy Lamarr" },
                 { answer: "Jean Sammet" },
-                { answer: "Annika Traner", },
+                { answer: "Annika Traner" },
             ],
             img: "assets/images/sammet.jpg",
 
@@ -191,7 +191,7 @@ $(document).ready(function () {
 
     function startGame() {
         $("#startBtn").click(function () {
-            
+
             $("#startBtn").css("visibility", "hidden");
             $("#questAns").css("visibility", "visible");
             $("#time").css("visibility", "visible");
@@ -310,24 +310,24 @@ $(document).ready(function () {
     // if the button is clicked then restart the game.. not the page
     function reset() {
         $("#resetQuest").click(function () {
-           $("#resetQuest").css("visibility", "hidden");
-           $("#endScreen").html(" ");
-           $("#questAns").css("visibility", "visible");
-           $("#time").css("visibility", "visible");
-           $("#countdown").css("visibility", "visible");
-           $("#answers").css("visibility", "visible");
-           $("#question").css("visibility", "visible");
-           $("#endScreen").css("visibility", "hidden");
-           timer = 30;
-           timeCount = 30;
+            $("#resetQuest").css("visibility", "hidden");
+            $("#endScreen").html(" ");
+            $("#questAns").css("visibility", "visible");
+            $("#time").css("visibility", "visible");
+            $("#countdown").css("visibility", "visible");
+            $("#answers").css("visibility", "visible");
+            $("#question").css("visibility", "visible");
+            $("#endScreen").css("visibility", "hidden");
+            timer = 30;
+            timeCount = 30;
             rightCount = 0;
             wrongCount = 0;
-           //starting question/answer combo
-           questCount = 0;
-           // a question/answer team appears
-           $("#question").html(questAns[questCount].question);
-           console.log(questAns[questCount].question);
-           getQ();
+            //starting question/answer combo
+            questCount = 0;
+            // a question/answer team appears
+            $("#question").html(questAns[questCount].question);
+            console.log(questAns[questCount].question);
+            getQ();
 
         }
         )
@@ -335,8 +335,8 @@ $(document).ready(function () {
 
 
     function endGame() {
-        
-        questCount= 0;
+
+        questCount = 0;
         timeCount = 0;
         ansCount = 0;
         clearInterval(timer);
