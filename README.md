@@ -1,6 +1,6 @@
 <h1>Women in Tech Trivia Game</h1>
 
-<h3>This game was made with HTML, CSS, JavaScript, JQuery.</h3>
+<h3>This game was made with HTML, CSS, JavaScript, and JQuery.</h3>
 <br>
 Instructions::
 Click the button to start! Guess which answer to each of the questions and find out if you're correct!
